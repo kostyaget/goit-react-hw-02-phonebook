@@ -1,3 +1,11 @@
-// import s from "./contactList.module.css";
-// import propTypes from "prop-types";
-// import React, { Component } from 'react';
+import s from "./contactList.module.css";
+import propTypes from "prop-types";
+
+export default function ContactList({ children }) {
+    const list = <ul className={arguments.list_block}>{children} </ul>
+    return list
+}
+
+ContactList.propTypes = {
+    children: propTypes.node,
+};

@@ -1,58 +1,58 @@
 import React, { Component } from "react";
 import { isEqual } from "lodash";
+// import contactsData from './contacts.json';
 
 import ContactForm from "./contactForm";
 import Filter from "./filter";
 import ContactList from "./contactList";
-import ContactItem from "./contactItem";
+import ContactsItem from "./contactItem";
 import s from "./contactForm/contactForm.module.css";
 
- export class App extends Component {
+ class App extends Component {
   state = {
     contacts: [],
     filter: '',
   }
 
-  ereseContact = (elem) => {
+  eraseContact = (elem) => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.name !== elem),
     }));
   }
 
   accumulateContacts = (data) => {
-    const text = this.state.contacts.some((user) => isEqual(data, user));
-    !text ? this.setState(prevState => ({
-      contacts: [data, ...prevState.contact],
+    const test = this.state.contacts.some((user) => isEqual(data, user));
+    !test ? this.setState(prevState => ({
+      contacts: [data, ...prevState.contacts],
     })) : alert(`${data.name} is already in contacts!` )
   }
 
   handleFilteredItems = (e) => {
-    this.setState({filter: e.ecurrentTarget.value})
+    this.setState({filter: e.currentTarget.value})
   }
-  FilteredItems = () => {
+
+  filteredItems = () => {
     const { filter, contacts } = this.state;
     const loweredFilter = filter.toLowerCase();
-
+    
     return contacts.filter(elem => elem.name.toLowerCase().includes(loweredFilter));
 
   }
   render() {
     return (
-      <div сlassName={s.container}>
-  <h2>Phonebook</h2>
-  <ContactForm data={this.accumulateContacts} />
-  <h2>Contacts</h2>
-  <Filter eventHandler={this.handleFilteredItems} options={this.state.filter} />
+      <div className={s.container}>
+        <h2>Phonebook</h2>
+        <ContactForm data={this.accumulateContacts} />
+        <h2>Contacts</h2>
+        <Filter eventHandler={this.handleFilteredItems} options={this.state.filter}/>
         <ContactList>
-          <ContactItem erase={this.eraseContact} filtered={this.filteredItems}/>
-  </ContactList>
-</div>
+          <ContactsItem erase={this.eraseContact} filtered={this.filteredItems}/>
+        </ContactList>
+      </div>
     )
   }
-  
 };
-
-
+export default App;
 // export const App = () => {
 //   return (
 //     <div

@@ -1,1 +1,1 @@
-// export { default } from './contactList';
+export { default } from './contactList';
