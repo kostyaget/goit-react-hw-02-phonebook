@@ -20,6 +20,6 @@ export default function Filter({ options, eventHandler }) {
 }
 
 Filter.propTypes = {
-  eventHandler: propTypes.func,
-  options: propTypes.string,
+  eventHandler: propTypes.func.isRequired,
+  options: propTypes.string.isRequired,
 };

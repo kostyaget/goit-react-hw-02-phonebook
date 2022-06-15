@@ -1,4 +1,4 @@
-.contacts__item {
+.item {
     width: 550px;
     border: 1px solid black;
     border-radius: 4px;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.list__block {
+.list_block {
     padding: 0;
     margin: 0;
 }

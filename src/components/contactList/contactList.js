@@ -1,11 +1,25 @@
+import React from 'react';
+import ContactsItem from "../contactItem";
+import PropTypes from "prop-types";
 import s from "./contactList.module.css";
-import propTypes from "prop-types";
 
-export default function ContactList({ children }) {
-    const list = <ul className={s.list_block}>{children} </ul>
-    return list
-}
+const ContactList = ({ contacts, onDeleteContact }) => (
+  <ul className={s.list_block}>
+    {contacts.map(({ id, name, number }) => (
+      <li key={id}>
+        <ContactsItem name={name} id={id} number={number} onDeleteContact={ onDeleteContact}/>
+      </li>
+    ))}
+  </ul>
+);
 
 ContactList.propTypes = {
-    children: propTypes.node,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
 };
+export default ContactList;

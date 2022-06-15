@@ -3,11 +3,15 @@ import propTypes from "prop-types";
 import React, { Component } from 'react';
 
 class ContactForm extends Component {
-  state = { name: '', number: '' };
+  state = {
+        name: '',
+        id: '',
+        number: '',
+    }
 
   handleChange = e => {
-    const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
+    const { id, value } = e.currentTarget;
+    this.setState({ name: value, id: id});
   }
 
   handleSubmit = e => {
@@ -16,7 +20,7 @@ class ContactForm extends Component {
     const newObject = { name: name, number: number };
     this.props.data(newObject);
 
-    this.setState({ name: '', number: '' });
+    this.setState({ name: '', number: '', id: ''});
   };
 
   render() {
@@ -61,5 +65,5 @@ class ContactForm extends Component {
 export default ContactForm;
 
 ContactForm.propTypes = {
-  data: propTypes.func,
+  data: propTypes.func.isRequired,
 };
