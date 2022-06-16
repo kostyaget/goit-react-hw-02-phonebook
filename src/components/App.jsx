@@ -14,21 +14,15 @@ import s from "./contactForm/contactForm.module.css";
     ],
     filter: '',
    };
-   
-  //  eraseContact = (elem) => {
-  //    this.setState(prevState => ({
-  //      contacts: prevState.contacts.filter(contact => contact.name !== elem),
-  //    }));
-  //  };
 
   accumulateContacts = data => {
     if (this.state.contacts.find(contact => contact.name.toLowerCase() === data.name.toLowerCase())) {
       alert(`${data.name} is already in contacts`);
-      return
+      return;
     }
     this.setState(({ contacts }) => ({
       contacts: [data, ...contacts],
-    }))
+    }));
   };
 
    handleFilteredItems = event => {
