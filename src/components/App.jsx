@@ -57,9 +57,9 @@ import s from "./contactForm/contactForm.module.css";
         <ContactForm data={this.accumulateContacts} />
         <h2>Contacts</h2>
         <Filter eventHandler={this.handleFilteredItems} options={this.state.filter}/>
-        <ContactList>
+        <ContactList
           contacts={contacts}
-          onDeleteContact={this.deleteContact}
+          onDeleteContact={this.deleteContact}>
         </ContactList>
       </div>
     )
